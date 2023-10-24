@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.epam.demo</groupId>
     <artifactId>stage-2-module-1-build-tools-maven</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -15,22 +15,38 @@
 
     <properties>
         <junit.version>5.8.1</junit.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-params</artifactId>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+			<dependency>
+			  <groupId>org.junit.jupiter</groupId>
+			  <artifactId>junit-jupiter-engine</artifactId>
+			  <version>${junit.version}</version>
+			  <scope>test</scope>
+			</dependency>
         </dependencies>
     </dependencyManagement>
     <build>
         <plugins>
-            <plugin>
-                <!-- something should be here-->
-            </plugin>
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+		  </plugin>
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
+			<version>2.22.0</version>
+		  </plugin>
         </plugins>
     </build>
 </project>
